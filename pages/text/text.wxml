@@ -1,0 +1,22 @@
+<!--pages/text/text.wxml-->
+<!-- 1.基本使用 -->
+<text>Hello World\n</text>
+<text>你好，小程序\n</text>
+
+<!-- 2.seletable: false -->
+<!-- 默认情况下，text中的文本长按是不能选中的 -->
+<!-- seletable通过mustache语法来绑定值 -->
+<text selectable="{{true}}">Hello Vgri\n</text>
+<!-- 直接写一个单独的seletable也是表示true -->
+<text selectable>Hello Vgri\n</text>
+
+<!-- 3.space 决定文本空格的大小 -->
+<!-- ensp:半个中文字符的大小 -->
+<!-- emsp:一个中文字符的大小 -->
+<text>Hello World\n</text>
+<text space="nbsp">Hello World\n</text>
+<text space="ensp">Hello World\n</text>
+<text space="emsp">Hello World\n</text>
+
+<!-- 4.decode属性: 是否解码文本 -->
+<text decode>5 &gt; 3</text>

@@ -1,0 +1,31 @@
+<!-- 1.input的基本使用 -->
+<!-- input可以是单标签，也可以是双标签 -->
+<!-- <input></input> -->
+<input/>
+
+<!-- 2.value: input中的默认值 -->
+<input value="哈哈哈"/>
+
+<!-- 3.type: 决定键盘类型(文本输入键盘/数字输入键盘/身份证输入键盘/带小数点的数字键盘) -->
+<input type="text"/>
+<!-- <input type="idcard"/>
+<input type="digit" /> -->
+
+<!-- 4.password: 暗文 -->
+<input password/>
+
+<!-- 5.placehoder: 占位符 -->
+<input placeholder="这是占位符"/>
+
+<!-- 6.confirm-type -->
+<input confirm-type="send" />
+<!-- <input confirm-type="search" />
+<input confirm-type="next	" />
+<input confirm-type="go" />
+<input confirm-type="down" /> -->
+
+<!-- 7.input绑定事件 -->
+<input bindinput="handleInput"
+       bindfocus="handleFocus"
+       bindblur="handleBlur"/>
+<!-- 如何获得用户输入的文字? bindinput绑定的事件处理函数里面的有一个event参数，这个event参数里面的detial里面的value就是用户输入的内容-->

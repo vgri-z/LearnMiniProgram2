@@ -1,0 +1,20 @@
+<!-- 1.水平滚动: scroll-x -->
+<scroll-view class="container1" scroll-x>
+  <view wx:for="{{10}}" class="item1">{{item}}</view>
+</scroll-view>
+
+<!-- 2.垂直滚动: scroll-y -->
+<scroll-view class="container2" scroll-y>
+  <view wx:for="{{10}}" class="item2">{{item}}</view>
+</scroll-view>
+
+<!-- 3.其他补充 事件的监听 -->
+<scroll-view
+  class="container2" 
+  scroll-y
+  bindscroll="handleScroll"
+  upper-threshold="{{100}}"
+  bindscrolltoupper="handleToUpper">
+  <view wx:for="{{10}}" class="item2">{{item}}</view>
+</scroll-view>
+<!-- 怎么获取实时的滚动位置? event里面的detail里面的scrollTop -->
