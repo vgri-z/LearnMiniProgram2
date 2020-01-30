@@ -1,0 +1,128 @@
+<!-- 1.wxml的格式 -->
+<!-- <view></view>
+<image/>
+<input/> -->
+<!-- <view Class="" class=""></view> -->
+
+<!-- 2.Muatach语法 -->
+<view>{{message}}</view>
+<view>{{firstName}} {{lastName}}</view>
+<view>{{firstName + " " + lastName}}</view>
+<view>{{age > 18 ? "成年人" : "未成年人"}}</view>
+
+<view>{{nowTime}}</view>
+
+<button size="mini" bindtap="handleSwitchColor">切换颜色</button>
+<view class="box {{isActive ? 'active' : ''}}">Hello World</view>
+
+<view>------------- 条件判断 -------------</view>
+<!-- wx:if的使用 -->
+<button size="mini" bindtap="handleSwitchShow">切换显示</button>
+<view wx:if="{{isShow}}">Hello World</view>
+
+<!-- wx:elif/wx:else -->
+<button size="mini" bindtap="handleIncrement">分数递增6</button>
+<view wx:if="{{score >= 90}}">优秀</view>
+<view wx:elif="{{score >= 80}}">良好</view>
+<view wx:elif="{{score >= 60}}">及格</view>
+<view wx:else>不及格</view>
+
+<!-- hidden属性 -->
+<view hidden="{{false}}">我是hidden属性控制的内容</view>
+
+
+<!-- wx:if与hidden在隐藏组件时有什么区别 -->
+<!-- 
+区别: 
+  hidden: 将一个组件隐藏起来时,该组件依然是存在(display: none)
+  wx:if: 将一个组件隐藏起来时, 该组件根本不存在(压根没有创建)
+选择:
+  如果显示和隐藏切换的频繁非常高, 选择使用hidden
+  如果显示和隐藏切换的频繁非常低, 那么选择wx:if
+ -->
+<view>------------------</view>
+<view hidden="{{false}}">我是hidden属性控制的内容</view>
+<view wx:if="{{true}}">我是wx:if控制的内容</view>
+
+<!-- 1.列表渲染wx:for -->
+<!-- 1.1遍历数组/字符串/数字 -->
+<view>------------------</view>
+<!-- <view wx:for="{{letters}}">{{item}}-{{index}}</view>
+<view wx:for="monica">{{item}}-{{index}}</view>
+<view wx:for="{{10}}">{{item}}</view> -->
+
+<!-- 2.block标签 -->
+<!-- <block wx:if="{{isShow}}">
+  <button>click</button>
+  <view>哈哈哈</view>
+  <view>我是内容</view>
+</block>
+
+<block wx:for="{{3}}">
+  <button>click</button>
+  <view>哈哈哈</view>
+  <view>我是内容</view>
+</block> -->
+
+<!-- 3.给item/index起名字 -->
+<!-- <view wx:for="{{movies}}" wx:for-item="movie" wx:for-index="i">{{i}}-{{movie}}</view> -->
+
+<!-- <block wx:for="{{nums}}" wx:for-item="inner_number">
+  <block wx:for="{{inner_number}}">
+    <view>{{item}}</view>
+  </block>
+</block> -->
+
+<!-- 4.key的作用 -->
+<!-- 如果用index仅仅是消除警告 -->
+<!-- <view class="content">
+  <view wx:for="{{letters}}" wx:key="item">{{item}}</view>
+</view> -->
+
+<view>------------- template -------------</view>
+<!-- 之前小程序不支持自定义组件，为了进行代码的复用：template -->
+<!-- 模板中包裹的内容，在没有被使用前，是不会被渲染出来的 -->
+<!-- <template name="messageItem">
+  <button size="mini">{{btn}}</button>
+  <view>{{content}}</view>
+</template> -->
+
+<!-- 结论: include是不能导入模板 -->
+<!-- 
+关于wxml的导入有两种方式:
+  import导入: 
+    1.主要是导入template
+    2.特点: 不能进行递归导入
+  include引入:
+    1.将公共的wxml中的组件抽取到一个文件中
+    2.特点: 不能导入template/wxs, 可以进行递归导入
+ -->
+
+<import src="/wxml/template.wxml" />
+<import src="/wxml/abc.wxml" />
+
+<template is="messageItem" data="{{btn: 'click', content: '哈哈哈'}}"></template>
+<template is="messageItem" data="{{btn: 'click', content: '呵呵呵'}}"></template>
+<template is="messageItem" data="{{btn: 'click', content: '略略略'}}"></template>
+<template is="messageItem" data="{{btn: 'click', content: '啦啦啦'}}"></template>
+
+<template is="abc"></template>
+
+<!-- <template name="msgItem">
+  <view>{{index}}.{{content}}-{{time}}</view>
+</template>
+
+<template is="msgItem" data="{{index: 1, content: '哈哈哈', time: '2019-12-24'}}"></template>
+<template is="msgItem" data="{{index: 2, content: '呵呵呵', time: '2019/11/23'}}"></template>
+<template is="msgItem" data="{{index: 3, content: '啦啦啦', time: '2019-12-31'}}"></template> -->
+
+<!-- <template name="odd">
+  <view>奇数: {{num}}</view>
+</template>
+<template name="even">
+  <view>偶数: {{num}}</view>
+</template>
+
+<block wx:for="{{[100,23,89,32,97]}}" wx:key="item">
+  <template is="{{item % 2 === 1 ? 'odd' : 'even'}}" data="{{num: item}}"></template>
+</block> -->

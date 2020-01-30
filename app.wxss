@@ -1,1 +1,11 @@
 /**app.wxss**/
+@import "./style/btn.wxss";
+
+.container {
+  font-size: 32px;
+  color: lime;
+}
+
+.content {
+  background: lime;
+}

@@ -1,0 +1,6 @@
+<!-- <include src="/wxml/nav.wxml" /> -->
+
+<view>
+  <include src="/wxml/nav.wxml" />
+  <view>标题</view>
+</view>
