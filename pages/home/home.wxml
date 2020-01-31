@@ -1,2 +1,44 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 1.事件处理的回顾 -->
+<button size="mini" bindtap="handleBtnClick">click</button>
+<button size="mini" bind:tap="handleBtnClick">click</button>
+<button size="mini" catchtap="handleBtnClick">click</button>
+
+<!-- 2.常见的一些事件 -->
+<view class="box" bind:touchstart="handleTouchStart" bind:touchmove="handleTouchMove" bind:touchend="handleTouchEnd" bind:tap="handleTap" bind:longpress="handlelongPress"></view>
+<!-- 3.事件对象的分析 -->
+<!-- touches记录有几个手指在小程序中触摸以及对应的触摸点的信息 -->
+<!-- currentTouches是用来记录变化的，这两个属性在touchend事件中是不一样的 -->
+<button id="btn" size="mini" bindtap="handleEventClick" bindtouchend="handleEventEnd">click</button>
+
+<!-- currentTarget记录的是触发事件的view -->
+<!-- target是记录的产生事件的view -->
+<view class="outer" id="outer" bindtap="handleOuter">
+  外层的view
+  <view class="inner" id="inner" bindtap="handleInner">内层的view</view>
+</view>
+
+<!-- 4.事件的参数传递 -->
+<view class="container">
+  <block wx:for="{{titles}}" wx:key="index">
+    <view class="item" bindtap="handleItemClikc" data-item="{{item}}" data-index="{{index}}">
+      {{item}}
+    </view>
+  </block>
+</view>
+
+<!-- 5.事件冒泡与事件捕获  bind与catch的区别 -->
+<!-- bind一层层传递 -->
+<!-- catch阻止事件的进一步传递 -->
+<view class="view1" 
+      capture-bind:tap="handleCaptureOuter"
+      bindtap="handleBulbleOuter">
+  outer view
+  <view class="view2" 
+        capture-bind:tap="handleCaptureMiddle"
+        catchtap="handleBulbleMiddle">
+    middle view
+    <view class="view3"
+          capture-bind:tap="handleCaptureInner"
+          bindtap="handleBulbleInner">inner view</view>
+  </view>
+</view>
