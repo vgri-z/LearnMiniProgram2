@@ -1,1 +1,17 @@
 /* pages/home/home.wxss */
+.title{
+  font-size: 30px;
+  color: red;
+}
+
+.external1 {
+  color: red;
+}
+
+.external2 {
+  color: lime;
+}
+
+.external3 {
+  color: #0ff;
+}
