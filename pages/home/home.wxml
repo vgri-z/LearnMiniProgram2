@@ -1,2 +1,3 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<text class="title">Hello World</text>
+<button size="mini">click</button>
+

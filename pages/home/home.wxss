@@ -1,1 +1,5 @@
 /* pages/home/home.wxss */
+.title {
+  font-size: 60rpx;
+  color: lime;
+}
