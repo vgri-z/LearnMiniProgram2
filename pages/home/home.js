@@ -1,66 +1,64 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  handleShowToast() {
+    wx.showToast({
+      title: '加载中ing',
+      icon: "loading",
+      duration: 2000,
+      mask: true,
+      success: () => {
+        console.log("展示弹窗成功")
+      },
+      fail: () => {
+        console.log("展示弹窗失败")
+      },
+      complete: () => {//showToast调用成功与失败都会执行
+        console.log("完成showToast的调用")
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  handlleShowModal() {
+    wx.showModal({
+      title: 'title',
+      content: 'content',
+      cancelText: "quit",
+      cancelColor: 'red',
+      success: (res) => {
+        console.log(res)
+        if(res.cancel) {
+          console.log("用户点击了取消按钮")
+        }
+        if(res.confirm) {
+          console.log("用户点击了确定按钮")
+        }
+      }
+    })
   },
+  handleShowLoading() {
+    wx.showLoading({
+      title: 'loading',
+      mask: true
+    }),
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    setTimeout(() => {
+      //必须手动hideLoading才可以让loading消失
+      wx.hideLoading()
+    }, 3000)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleShowAction() {
+    wx.showActionSheet({
+      itemList: ['相册', '拍照'],
+      itemColor: 'lime',
+      success: (res) => {
+        console.log(res)
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (options) {
+    return {
+      title: "Hello World",
+      path: "pages/about/about",
+      imageUrl: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2726287664,3762141500&fm=26&gp=0.jpg"
+    }
   }
 })
