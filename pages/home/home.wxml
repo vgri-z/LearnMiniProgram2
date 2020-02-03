@@ -1,2 +1,33 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<text class='title'>Hello World</text>
+<button size='mini'>按钮</button>
+
+<!-- 1.navigator页面跳转 -->
+<navigator url="../detail/detail">跳到详情页</navigator>
+
+<!-- 2.navigator属性: open-type -->
+<navigator url="../detail/detail"
+           open-type='redirect'>
+  跳到详情页(redirect)
+</navigator>
+
+<navigator url="../about/about"
+           open-type="switchTab">
+  跳到关于页
+</navigator>
+
+<navigator url="../detail/detail"
+           open-type="reLaunch">
+  跳到详情页
+</navigator>
+
+<!-- 3.跳转过程中数据的传递 -->
+<!-- 从首页跳转到详情页携带数据 -->
+<!-- 传递过去的参数在detail的onLoad生命周期函数里面的options里面可以拿到 -->
+<navigator url="../detail/detail?name=vgri&age=22&height=184">跳到详情页</navigator>
+
+<!-- 从详情页返回首页修改首页数据 -->
+<view>{{title}}</view>
+
+<!-- 4.通过代码的形式进行页面跳转 -->
+<button size="mini" bindtap="handlePushDetail">跳到详情页</button>
