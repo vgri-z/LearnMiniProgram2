@@ -1,0 +1,4 @@
+<!--pages/home/childCpns/w-popular/w-popular.wxml-->
+<view>
+  <image src="/assets/home/popular_bg.jpg"></image>
+</view>
